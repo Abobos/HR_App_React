@@ -381,9 +381,8 @@ div.feedback {
   margin-top: 110px;
   padding: 2rem;
   background: white;
-  height: 70vh;
+
   border-radius: 1rem;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5), -2px -2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .template input {
@@ -396,7 +395,7 @@ div.feedback {
   width: 600px;
   height: 320px;
   margin: 0 auto;
-  border: 3px solid black;
+  border: 3px solid rgba(212, 204, 204, 0.582);
 }
 
 /* .image-containerI {
@@ -453,8 +452,39 @@ div.feedback {
   margin-top: 1rem;
 }
 
+.btn-delete {
+  color: white;
+  background-color: rgb(252, 39, 39);
+  padding: 0.6rem;
+}
+
+.btn-delete:hover {
+  background-color: red;
+}
+
+.btn-edit {
+  color: white;
+  border: 3px solid gray;
+  background: transparent;
+  color: black;
+  padding: 0.6rem;
+}
+
+.btn-edit:hover {
+  background-color: whitesmoke;
+}
+
 .btn-new:hover {
   background-color: #f5600a;
+}
+
+.btn-createIII {
+  border-color: var(--mainColor);
+  border-radius: 5px;
+  padding: 0.5rem;
+  background-color: white;
+  color: var(--mainColor);
+  font-weight: bolder;
 }
 /* SideNav */
 .sideNav {

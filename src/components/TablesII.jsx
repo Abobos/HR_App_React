@@ -39,7 +39,9 @@ class Tables extends Component {
 
               <div className="ml-a">
                 <Link to="/createTemplate">
-                  <button>Create {this.props.name}</button>
+                  <button className="btn-createIII cursor-pointer">
+                    Create {this.props.name}
+                  </button>
                 </Link>
               </div>
             </div>
@@ -47,7 +49,7 @@ class Tables extends Component {
             <table className="ab-table">
               <thead>
                 <tr>
-                  <th>Template Name</th>
+                  <th>Document Name</th>
                   <th>Owner</th>
                   <th>Recipient</th>
                   <th>Status</th>
@@ -67,7 +69,7 @@ class Tables extends Component {
                         <td>{this.dateFormatter(template.created_at)}</td>
                         <td>
                           <div>
-                            <button className="">delete</button>
+                            <button className="btn-delete">delete</button>
                           </div>
                         </td>
                       </tr>

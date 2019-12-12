@@ -45,7 +45,9 @@ class Tables extends Component {
 
               <div className="ml-a">
                 <Link to="/createTemplate">
-                  <button className="">Create {this.props.name}</button>
+                  <button className="btn-createIII cursor-pointer">
+                    Create {this.props.name}
+                  </button>
                 </Link>
               </div>
             </div>
@@ -70,7 +72,7 @@ class Tables extends Component {
                         <td>
                           <div>
                             <button
-                              className=""
+                              className="btn-delete cursor-pointer"
                               onClick={() =>
                                 this.props.deleteTemplate(template.id)
                               }
@@ -79,7 +81,9 @@ class Tables extends Component {
                             </button>
                             <Link to={`/editTemplate/${template.id}`}>
                               {' '}
-                              <button className="ml-II">edit</button>
+                              <button className="btn-edit ml-II cursor-pointer">
+                                edit
+                              </button>
                             </Link>
                           </div>
                         </td>

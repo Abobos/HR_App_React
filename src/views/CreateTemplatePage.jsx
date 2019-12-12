@@ -73,13 +73,14 @@ class createTemplatePage extends Component {
       .then(response => {
         console.log(response);
         if (response.error) {
-          this.setState({ loading: true, mainResponse: response.error });
+          this.setState({ loading: false, mainResponse: response.error });
         } else {
-          this.setState({ loading: true, mainResponse: 'success' });
+          this.setState({ loading: false, mainResponse: 'success' });
         }
       })
       .catch(e => {
-        this.setState({ loading: true, mainResponse: 'Something went wrong' });
+        console.log(e);
+        this.setState({ loading: false, mainResponse: 'Something went wrong' });
       });
   };
 
@@ -91,21 +92,21 @@ class createTemplatePage extends Component {
     if (this.state.mainResponse === 'success') {
       navigate('/template');
     }
-    // let $imagePreview = (
-    //   <div className="previewText image-container">file preview here</div>
-    // );
-    // if (this.state.filePreviewUrl) {
-    //   $imagePreview = (
-    //     <div className="image-container">
-    //       <FileViewer
-    //         fileType={this.state.fileType}
-    //         filePath={this.state.filePreviewUrl}
-    //         onError={this.error}
-    //         key={this.state.fileType}
-    //       />{" "}
-    //     </div>
-    //   );
-    // }
+    let $imagePreview = (
+      <div className="previewText image-container">file preview here</div>
+    );
+    if (this.state.filePreviewUrl) {
+      $imagePreview = (
+        <div className="image-container">
+          <FileViewer
+            fileType={this.state.fileType}
+            filePath={this.state.filePreviewUrl}
+            onError={this.error}
+            key={this.state.fileType}
+          />{' '}
+        </div>
+      );
+    }
     return (
       <React.Fragment>
         <SideNav />
@@ -128,7 +129,7 @@ class createTemplatePage extends Component {
               <form onSubmit={this.handleSubmit} className="text-center">
                 <br />
                 <div className="">
-                  {/* <div> {$imagePreview}</div> */}
+                  <div> {$imagePreview}</div>
                   <br />
                   <label htmlFor="document">
                     <b>Upload Document:</b>
@@ -142,7 +143,9 @@ class createTemplatePage extends Component {
                       required
                     />
                   </label>
-                  <p>NB: Only Pdf file is required</p>
+                  <p>
+                    <b>NB: only pdf/docx file is required</b>
+                  </p>
                 </div>
                 <br />
                 <div className="">
