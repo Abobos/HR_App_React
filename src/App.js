@@ -15,6 +15,7 @@ import IndexPage from './views/IndexPage.jsx';
 import TemplatePage from './views/TemplatePage.jsx';
 import DocumentPage from './views/DocumentPage.jsx';
 import CreateTemplatePage from './views/CreateTemplatePage.jsx';
+import EditTemplatePage from './views/editTemplatePage.jsx';
 import SignaturePage from './views/SignaturePage.jsx';
 
 class App extends Component {
@@ -28,6 +29,7 @@ class App extends Component {
           <TemplatePage path="/template" />
           <DocumentPage path="/document" />
           <CreateTemplatePage path="/createTemplate" />
+          <EditTemplatePage path="/editTemplate/:id" />
           <SignaturePage path="/signature" />
         </Router>
       </ErrorHandler>

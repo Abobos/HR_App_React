@@ -10,13 +10,14 @@ import { navigate } from '@reach/router';
 
 import FileViewer from 'react-file-viewer';
 
-class createTemplatePage extends Component {
+class editTemplatePage extends Component {
   state = {
     template_name: '',
     document: '',
     recipient: '',
     fileType: '',
     filePreviewUrl: '',
+    templates: [],
     loading: false,
     mainError: false,
   };
@@ -50,6 +51,39 @@ class createTemplatePage extends Component {
     }
   };
 
+  componentDidMount() {
+    this.setState({ loading: true });
+
+    const { token } = localStorage;
+
+    const { id } = this.props;
+
+    fetch(`${baseUrl}/api/v1/template/${id}`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json', Authorization: token },
+      cache: 'reload',
+    })
+      .then(res => res.json())
+      .then(response => {
+        console.log(response);
+        if (response.error) {
+          this.setState({ loading: false, mainResponse: response.error });
+        } else {
+          console.log(response);
+          this.setState({
+            loading: false,
+            template_name: response.data[0].name,
+            recipient: response.data[0].recipient,
+            mainResponse: 'success',
+          });
+        }
+      })
+      .catch(e => {
+        console.log(e);
+        this.setState({ loading: false, mainResponse: 'Something went wrong' });
+      });
+  }
+
   handleSubmit = e => {
     e.preventDefault();
 
@@ -58,28 +92,30 @@ class createTemplatePage extends Component {
     formData.append('docs', this.state.document);
     formData.append('recipient', this.state.recipient);
     formData.append('name', this.state.template_name);
-    formData.append('action', 'send');
-
-    this.setState({ loading: true });
 
     const { token } = localStorage;
 
-    fetch(`${baseUrl}/api/v1/template`, {
-      method: 'POST',
+    const { id: templateId } = this.props;
+
+    this.setState({ loading: true });
+
+    fetch(`${baseUrl}/api/v1/template/${templateId}`, {
+      method: 'PUT',
       headers: { Authorization: token },
       body: formData,
     })
       .then(res => res.json())
       .then(response => {
-        console.log(response);
         if (response.error) {
-          this.setState({ loading: true, mainResponse: response.error });
+          this.setState({ loading: false, mainResponse: response.error });
         } else {
-          this.setState({ loading: true, mainResponse: 'success' });
+          this.setState({ loading: false, mainResponse: 'success' });
+          navigate('/template');
         }
       })
       .catch(e => {
-        this.setState({ loading: true, mainResponse: 'Something went wrong' });
+        console.error(e);
+        this.setState({ loading: false, mainResponse: 'Something went wrong' });
       });
   };
 
@@ -88,9 +124,12 @@ class createTemplatePage extends Component {
   };
 
   render() {
-    if (this.state.mainResponse === 'success') {
-      navigate('/template');
-    }
+    // if (this.state.mainResponse === 'success') {
+    //   this.setState({
+    //     mainResponse: '',
+    //   });
+    //
+    // }
     // let $imagePreview = (
     //   <div className="previewText image-container">file preview here</div>
     // );
@@ -114,16 +153,12 @@ class createTemplatePage extends Component {
           <div className="col-3" />
 
           {!this.state.loading ? (
-            <div className="template-form-cardII col-8">
-              <h2 className="text-center">Create Template</h2>
+            <div className="template-form-card col-8">
+              <h2 className="text-center">Edit Template</h2>
 
               <br />
               <br />
               <br />
-
-              <div className="feedback text-center">
-                {this.state.mainResponse}
-              </div>
 
               <form onSubmit={this.handleSubmit} className="text-center">
                 <br />
@@ -137,7 +172,6 @@ class createTemplatePage extends Component {
                     <input
                       type="file"
                       name="document"
-                      // value={this.state.firstName}
                       onChange={this.fileChangeHandler}
                       required
                     />
@@ -178,7 +212,7 @@ class createTemplatePage extends Component {
                 </div>
                 <br />
                 <div>
-                  <button className="btn-creates">save and send</button>
+                  <button className="btn-creates">save</button>
                 </div>
               </form>
             </div>
@@ -191,4 +225,4 @@ class createTemplatePage extends Component {
   }
 }
 
-export default createTemplatePage;
+export default editTemplatePage;

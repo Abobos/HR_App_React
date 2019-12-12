@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+
+import Loaders from '../components/Loader.jsx';
 import SideNav from '../components/SideNav.jsx';
 import UserNav from '../components/UserNav.jsx';
 
@@ -38,9 +40,7 @@ class Signature extends Component {
     }
   };
   render() {
-    let $imagePreview = (
-      <div className="previewText image-containerI">file preview here</div>
-    );
+    let $imagePreview = <div className="previewText image-containerI"></div>;
     if (this.state.filePreviewUrl) {
       $imagePreview = (
         <div className="image-containerI">
@@ -76,10 +76,12 @@ class Signature extends Component {
                 <br />
                 <div className="">
                   <div> {$imagePreview}</div>
-                  <p>NB: Only jpg/png file is required</p>
+                  <p>
+                    <b>NB: Only jpg/png file is required</b>
+                  </p>
                   <br />
                   <label htmlFor="document">
-                    <b>Upload Document:</b>
+                    {/* <b>Upload Document:</b> */}
                     <br />
                     <span className="error">{this.state.firstNameError}</span>
                     <input
@@ -107,146 +109,3 @@ class Signature extends Component {
 }
 
 export default Signature;
-
-//   handleSubmit = e => {
-//     e.preventDefault();
-
-//     let formData = new FormData();
-
-//     formData.append("docs", this.state.document);
-//     formData.append("recipient", this.state.recipient);
-//     formData.append("name", this.state.template_name);
-//     formData.append("action", "send");
-
-//     this.setState({ loading: true });
-
-//     const { token } = localStorage;
-
-//     fetch(`${baseUrl}/api/v1/template`, {
-//       method: "POST",
-//       headers: { Authorization: token },
-//       body: formData
-//     })
-//       .then(res => res.json())
-//       .then(response => {
-//         console.log(response);
-//         if (response.error) {
-//           this.setState({ loading: true, mainResponse: response.error });
-//         } else {
-//           this.setState({ mainResponse: "success" });
-//         }
-//       })
-//       .catch(e => {
-//         this.setState({ loading: true, mainResponse: "Something went wrong" });
-//       });
-//   };
-
-//   error = e => {
-//     console.log(e, "something went wrong");
-//   };
-
-//   render() {
-//     if (this.state.mainResponse === "success") {
-//       navigate("/template");
-//     }
-// let $imagePreview = (
-//   <div className="previewText image-container">file preview here</div>
-// );
-// if (this.state.filePreviewUrl) {
-//   $imagePreview = (
-//     <div className="image-container">
-//       <FileViewer
-//         fileType={this.state.fileType}
-//         filePath={this.state.filePreviewUrl}
-//         onError={this.error}
-//         key={this.state.fileType}
-//       />{" "}
-//     </div>
-//   );
-// }
-//     return (
-//       <React.Fragment>
-//         <SideNav />
-//         <UserNav />
-//         <div className="template row">
-//           <div className="col-3" />
-
-//           {!this.state.loading ? (
-//             <div className="template-form-card col-8">
-//               <h2 className="text-center">Create Template</h2>
-
-//               <br />
-//               <br />
-//               <br />
-
-//               <div className="feedback text-center">
-//                 {this.state.mainResponse}
-//               </div>
-
-//               <form onSubmit={this.handleSubmit} className="text-center">
-//                 <br />
-//                 <div className="">
-//                   {/* <div> {$imagePreview}</div> */}
-//                   <br />
-//                   <label htmlFor="document">
-//                     <b>Upload Document:</b>
-//                     <br />
-//                     {/* <span className="error">{this.state.firstNameError}</span> */}
-//                     <input
-//                       type="file"
-//                       name="document"
-//                       // value={this.state.firstName}
-//                       onChange={this.fileChangeHandler}
-//                       required
-//                     />
-//                   </label>
-//                   <p>NB: Only Pdf file is required</p>
-//                 </div>
-//                 <br />
-//                 <div className="">
-//                   <label htmlFor="templateName">
-//                     <b>Template Name:</b>
-//                     <br />
-//                     {/* <span className="error">
-//                       {this.state.confirmPasswordError}
-//                     </span> */}
-//                     <input
-//                       type="text"
-//                       name="template_name"
-//                       onChange={this.fileChangeHandler}
-//                       value={this.state.template_name}
-//                       required
-//                     />
-//                   </label>
-//                 </div>
-//                 <br />
-//                 <div className="">
-//                   <label htmlFor="recipient">
-//                     <b>recipients email:</b>
-//                     <br />
-//                     {/* <span className="error">{this.state.lastNameError}</span> */}
-//                     <input
-//                       type="email"
-//                       name="recipient"
-//                       onChange={this.fileChangeHandler}
-//                       value={this.state.recipient}
-//                       required
-//                     />
-//                   </label>
-//                 </div>
-//                 <br />
-//                 <div>
-//                   <button className="">upload</button>
-//                 </div>
-//               </form>
-//             </div>
-//           ) : (
-//             <Loaders />
-//           )}
-//         </div>
-//       </React.Fragment>
-//     );
-//   }
-// }
-
-// export default createTemplatePage;

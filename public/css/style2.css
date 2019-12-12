@@ -366,11 +366,24 @@ div.feedback {
   margin-top: 200px;
 }
 .template-hd {
-  margin-top: 200px;
+  margin-top: 100px;
 }
 .template-form-card {
-  margin-top: 100px;
+  margin-top: 200px;
   padding: 2rem;
+  background: white;
+  height: auto;
+  border-radius: 1rem;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5), -2px -2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.template-form-cardII {
+  margin-top: 110px;
+  padding: 2rem;
+  background: white;
+  height: 70vh;
+  border-radius: 1rem;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5), -2px -2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .template input {
@@ -398,13 +411,57 @@ div.feedback {
   width: 100vw;
   background: white;
   border-bottom: 3px solid orange;
+  z-index: 2;
 }
 
+.templateII {
+  position: fixed;
+  top: 9rem;
+  left: 25rem;
+  /* border: 3px solid blue; */
+  width: 60vw;
+  height: 60vh;
+}
+
+.td {
+  background: white;
+  width: 20rem;
+  height: 10rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 1px 1px 2px rgba(153, 114, 95, 0.281),
+    -1px -1px 3px rgba(0, 0, 0, 0.5);
+  margin: 1rem auto;
+  font-weight: bolder;
+  font-size: 1rem;
+  /* width: 100%; */
+}
+
+.td:hover {
+  box-shadow: 2px 2px 5px rgba(153, 114, 95, 0.281),
+    -2px -2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.btn-new {
+  background: transparent;
+  padding: 0.5rem;
+  border-radius: 5px;
+  background-color: #d6550b;
+  color: white;
+  border: orangered;
+  font-weight: normal;
+  margin-top: 1rem;
+}
+
+.btn-new:hover {
+  background-color: #f5600a;
+}
 /* SideNav */
 .sideNav {
   background: var(--mainColor);
   height: 100vh;
   color: white;
+  z-index: 2;
   position: fixed;
   margin-top: 86px;
   -webkit-transition: 0.5s;

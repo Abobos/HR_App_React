@@ -4,10 +4,11 @@ import { navigate } from '@reach/router';
 class SideNav extends Component {
   state = {
     features: [
-      { type: 'DashBoard', icon: 'fa fa-inbox' },
-      { type: 'Documents', icon: 'fa fa-send' },
-      { type: 'Templates', icon: 'fa fa-circle-o' },
-      { type: 'Signature', icon: 'fa fa-circle-o' },
+      { type: 'DashBoard', icon: 'fa fa-dashboard' },
+      { type: 'Documents', icon: 'fa fa-file' },
+      { type: 'Templates', icon: 'fa fa-envelope' },
+      { type: 'Signature', icon: 'fa fa-pencil' },
+      { type: 'Forms', icon: 'fa fa-file' },
     ],
   };
 

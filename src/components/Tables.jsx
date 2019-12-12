@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Link, navigate } from '@reach/router';
+import { Link } from '@reach/router';
 
 import Empty from '../components/Empty.jsx';
 
@@ -13,6 +13,7 @@ class Tables extends Component {
     const todayFormat = today.toLocaleString('en-Us', format).split(',');
 
     const monthDay = todayFormat[0];
+
     let day = `${monthDay.split(' ')[1]}`;
 
     if (day.charAt(day.length - 1) === '1' && day !== '11') day += 'st';
@@ -21,7 +22,9 @@ class Tables extends Component {
     else day += 'th';
 
     const month = `${monthDay.split(' ')[0]}`;
+
     const year = `${todayFormat[1]}`;
+
     const todayDate = `${day} ${month},${year}`;
 
     return todayDate;
@@ -74,7 +77,10 @@ class Tables extends Component {
                             >
                               delete
                             </button>
-                            <button className="ml-II">edit</button>
+                            <Link to={`/editTemplate/${template.id}`}>
+                              {' '}
+                              <button className="ml-II">edit</button>
+                            </Link>
                           </div>
                         </td>
                       </tr>
