@@ -413,6 +413,9 @@ div.feedback {
   z-index: 2;
 }
 
+.successPage {
+  margin-top: 10rem;
+}
 .templateII {
   position: fixed;
   top: 9rem;

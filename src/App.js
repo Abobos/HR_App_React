@@ -17,6 +17,7 @@ import DocumentPage from './views/DocumentPage.jsx';
 import CreateTemplatePage from './views/CreateTemplatePage.jsx';
 import EditTemplatePage from './views/editTemplatePage.jsx';
 import SignaturePage from './views/SignaturePage.jsx';
+import SuccessPage from './views/SuccessPage.jsx';
 
 class App extends Component {
   render() {
@@ -31,6 +32,7 @@ class App extends Component {
           <CreateTemplatePage path="/createTemplate" />
           <EditTemplatePage path="/editTemplate/:id" />
           <SignaturePage path="/signature" />
+          <SuccessPage path="/success" />
         </Router>
       </ErrorHandler>
     );

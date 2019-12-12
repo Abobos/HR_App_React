@@ -4,7 +4,7 @@ import Loaders from '../components/Loader.jsx';
 import SideNav from '../components/SideNav.jsx';
 import UserNav from '../components/UserNav.jsx';
 
-import baseUrl from '../config/baseUrl';
+import { navigate } from '@reach/router';
 
 class Signature extends Component {
   state = {
@@ -39,6 +39,12 @@ class Signature extends Component {
       this.setState({ [e.target.name]: e.target.value });
     }
   };
+
+  handleRedirect = e => {
+    e.preventDefault();
+
+    navigate('/success');
+  };
   render() {
     let $imagePreview = <div className="previewText image-containerI"></div>;
     if (this.state.filePreviewUrl) {
@@ -72,7 +78,7 @@ class Signature extends Component {
                 {this.state.mainResponse}
               </div>
 
-              <form onSubmit={this.handleSubmit} className="text-center">
+              <form onSubmit={this.handleRedirect} className="text-center">
                 <br />
                 <div className="">
                   <div> {$imagePreview}</div>
