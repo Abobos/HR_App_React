@@ -20,6 +20,7 @@ class editTemplatePage extends Component {
     templates: [],
     loading: false,
     mainError: false,
+    mainR: '',
   };
 
   fileChangeHandler = e => {
@@ -67,20 +68,19 @@ class editTemplatePage extends Component {
       .then(response => {
         console.log(response);
         if (response.error) {
-          this.setState({ loading: false, mainResponse: response.error });
+          this.setState({ loading: false, mainR: response.error });
         } else {
           console.log(response);
           this.setState({
             loading: false,
             template_name: response.data[0].name,
             recipient: response.data[0].recipient,
-            mainResponse: 'success',
           });
         }
       })
       .catch(e => {
         console.log(e);
-        this.setState({ loading: false, mainResponse: 'Something went wrong' });
+        this.setState({ loading: false, mainR: 'Something went wrong' });
       });
   }
 
@@ -107,14 +107,14 @@ class editTemplatePage extends Component {
       .then(res => res.json())
       .then(response => {
         if (response.error) {
-          this.setState({ loading: false, mainResponse: response.error });
+          this.setState({ loading: false, mainR: response.error });
         } else {
-          this.setState({ loading: false, mainResponse: 'success' });
+          this.setState({ loading: false, mainR: 'success' });
         }
       })
       .catch(e => {
         console.error(e);
-        this.setState({ loading: false, mainResponse: 'Something went wrong' });
+        this.setState({ loading: false, mainR: 'Something went wrong' });
       });
   };
 
@@ -123,9 +123,9 @@ class editTemplatePage extends Component {
   };
 
   render() {
-    if (this.state.mainResponse === 'success') {
+    if (this.state.mainR === 'success') {
       this.setState({
-        mainResponse: '',
+        mainR: '',
       });
       navigate('/template');
     }
@@ -150,9 +150,8 @@ class editTemplatePage extends Component {
         <UserNav />
         <div className="template row">
           <div className="col-3" />
-
           {!this.state.loading ? (
-            <div className="template-form-card col-8">
+            <div className="template-form-cardII col-8">
               <h2 className="text-center">Edit Template</h2>
 
               <br />
