@@ -92,21 +92,21 @@ class createTemplatePage extends Component {
     if (this.state.mainResponse === 'success') {
       navigate('/template');
     }
-    // let $imagePreview = (
-    //   <div className="previewText image-container">file preview here</div>
-    // );
-    // if (this.state.filePreviewUrl) {
-    //   $imagePreview = (
-    //     <div className="image-container">
-    //       <FileViewer
-    //         fileType={this.state.fileType}
-    //         filePath={this.state.filePreviewUrl}
-    //         onError={this.error}
-    //         key={this.state.fileType}
-    //       />{' '}
-    //     </div>
-    //   );
-    // }
+    let $imagePreview = (
+      <div className="previewText image-container">file preview here</div>
+    );
+    if (this.state.filePreviewUrl) {
+      $imagePreview = (
+        <div className="image-container">
+          <FileViewer
+            fileType={this.state.fileType}
+            filePath={this.state.filePreviewUrl}
+            onError={this.error}
+            key={this.state.fileType}
+          />{' '}
+        </div>
+      );
+    }
     return (
       <React.Fragment>
         <SideNav />
@@ -129,7 +129,7 @@ class createTemplatePage extends Component {
               <form onSubmit={this.handleSubmit} className="text-center">
                 <br />
                 <div className="">
-                  {/* <div> {$imagePreview}</div> */}
+                  <div> {$imagePreview}</div>
                   <br />
                   <label htmlFor="document">
                     <b>Upload Document:</b>

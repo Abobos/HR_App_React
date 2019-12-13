@@ -110,7 +110,6 @@ class editTemplatePage extends Component {
           this.setState({ loading: false, mainResponse: response.error });
         } else {
           this.setState({ loading: false, mainResponse: 'success' });
-          navigate('/template');
         }
       })
       .catch(e => {
@@ -124,12 +123,12 @@ class editTemplatePage extends Component {
   };
 
   render() {
-    // if (this.state.mainResponse === 'success') {
-    //   this.setState({
-    //     mainResponse: '',
-    //   });
-    //
-    // }
+    if (this.state.mainResponse === 'success') {
+      this.setState({
+        mainResponse: '',
+      });
+      navigate('/template');
+    }
     // let $imagePreview = (
     //   <div className="previewText image-container">file preview here</div>
     // );
